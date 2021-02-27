@@ -30,6 +30,10 @@ class CoinManager(private val coinProvider: CoinProvider, private val storage: I
         return storage.getCoins()
     }
 
+    fun getDefaultCoins(): List<Coin> {
+        return coinProvider.defaultCoins().coins
+    }
+
     fun getCoin(id: String): Coin? {
         return storage.getCoin(id)
     }

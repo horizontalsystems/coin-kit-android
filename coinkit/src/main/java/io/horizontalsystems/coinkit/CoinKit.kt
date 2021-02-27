@@ -14,6 +14,10 @@ class CoinKit(private val coinManager: CoinManager) {
         return coinManager.getCoins()
     }
 
+    fun getDefaultCoins(): List<Coin> {
+        return coinManager.getDefaultCoins()
+    }
+
     fun getCoin(id: String): Coin? {
         return coinManager.getCoin(id)
     }
@@ -27,6 +31,7 @@ class CoinKit(private val coinManager: CoinManager) {
     }
 
     companion object {
+
         fun create(context: Context, isTestnet: Boolean = false): CoinKit {
             val storage = Storage(Database.create(context))
             val coinProvider = CoinProvider(context, isTestnet)
