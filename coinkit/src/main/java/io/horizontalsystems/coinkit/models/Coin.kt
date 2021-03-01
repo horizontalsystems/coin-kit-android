@@ -14,8 +14,11 @@ class Coin(
     val type: CoinType,
     val code: String,
     val title: String,
-    val decimal: Int
-)
+    val decimal: Int){
+
+    val id: String
+        get() = type.ID
+}
 
 sealed class CoinType {
     object Bitcoin : CoinType()
@@ -29,6 +32,9 @@ sealed class CoinType {
     class Bep2(val symbol: String) : CoinType()
     class Bep20(val address: String) : CoinType()
     class Unsupported(val id: String) : CoinType()
+
+    val ID: String
+        get() = getCoinId()
 
     fun getCoinId(): String {
         return when (this) {

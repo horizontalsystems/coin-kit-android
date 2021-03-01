@@ -13,7 +13,7 @@ class DatabaseConverters {
     }
 
     @TypeConverter
-    fun toChartType(value: String): CoinType {
+    fun toCoinType(value: String): CoinType {
         return CoinType.fromString(value)
     }
 
