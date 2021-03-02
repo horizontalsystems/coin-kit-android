@@ -1,12 +1,15 @@
 package io.horizontalsystems.coinkit.models
 
 import android.content.Context
+import android.os.Parcelable
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.eclipsesource.json.Json
+import kotlinx.android.parcel.Parcelize
 import java.io.InputStreamReader
 
+@Parcelize
 @Entity
 class Coin(
     @PrimaryKey
@@ -14,23 +17,44 @@ class Coin(
     val type: CoinType,
     val code: String,
     val title: String,
-    val decimal: Int){
+    val decimal: Int): Parcelable{
 
     val id: String
         get() = type.ID
 }
 
-sealed class CoinType {
+sealed class CoinType: Parcelable {
+    @Parcelize
     object Bitcoin : CoinType()
+
+    @Parcelize
     object Litecoin : CoinType()
+
+    @Parcelize
     object BitcoinCash : CoinType()
+
+    @Parcelize
     object Dash : CoinType()
+
+    @Parcelize
     object Ethereum : CoinType()
+
+    @Parcelize
     object BinanceSmartChain : CoinType()
+
+    @Parcelize
     object Zcash : CoinType()
+
+    @Parcelize
     class Erc20(val address: String) : CoinType()
+
+    @Parcelize
     class Bep2(val symbol: String) : CoinType()
+
+    @Parcelize
     class Bep20(val address: String) : CoinType()
+
+    @Parcelize
     class Unsupported(val id: String) : CoinType()
 
     val ID: String
@@ -107,8 +131,12 @@ data class CoinResponse(val version: Int, val coins: List<Coin>){
                 var typeString = category.asObject().get("type").asString()
 
                 if(category.asObject().get("address") != null){
-                    if(!category.asObject().get("address").isNull)
+                    if(!category.asObject().get("address").isNull) {
                         typeString = "${typeString.trim()}|${category.asObject().get("address").asString().trim()}"
+
+                        if(typeString.contains("erc20|") || typeString.contains("bep20|") )
+                            typeString = typeString.toLowerCase()
+                    }
                 } else if(category.asObject().get("symbol") != null){
                     if(!category.asObject().get("symbol").isNull)
                         typeString = "${typeString.trim()}|${category.asObject().get("symbol").asString().trim()}"
