@@ -8,19 +8,31 @@ import androidx.room.PrimaryKey
 import com.eclipsesource.json.Json
 import kotlinx.android.parcel.Parcelize
 import java.io.InputStreamReader
+import java.util.*
 
 @Parcelize
 @Entity
-class Coin(
+data class Coin(
     @PrimaryKey
     @ColumnInfo(name = "id")
     val type: CoinType,
     val code: String,
     val title: String,
-    val decimal: Int): Parcelable{
+    val decimal: Int): Parcelable {
 
     val id: String
         get() = type.ID
+
+    override fun equals(other: Any?): Boolean {
+        if (other is Coin) {
+            return type.ID == other.type.ID && title == other.title && code == other.code
+        }
+        return super.equals(other)
+    }
+
+    override fun hashCode(): Int {
+        return Objects.hash(type.ID, title, code)
+    }
 }
 
 sealed class CoinType: Parcelable {
