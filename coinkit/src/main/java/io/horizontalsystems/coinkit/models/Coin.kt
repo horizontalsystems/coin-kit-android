@@ -25,13 +25,13 @@ data class Coin(
 
     override fun equals(other: Any?): Boolean {
         if (other is Coin) {
-            return type.ID == other.type.ID && title == other.title && code == other.code
+            return type == other.type
         }
         return super.equals(other)
     }
 
     override fun hashCode(): Int {
-        return Objects.hash(type.ID, title, code)
+        return Objects.hash(type.ID)
     }
 }
 
@@ -71,6 +71,17 @@ sealed class CoinType: Parcelable {
 
     val ID: String
         get() = getCoinId()
+
+    override fun equals(other: Any?): Boolean {
+        if (other is CoinType) {
+            return ID == other.ID
+        }
+        return super.equals(other)
+    }
+
+    override fun hashCode(): Int {
+        return Objects.hashCode(ID)
+    }
 
     fun getCoinId(): String {
         return when (this) {
