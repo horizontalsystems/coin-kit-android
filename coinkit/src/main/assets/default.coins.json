@@ -1,5 +1,5 @@
 {
-  "version": 2,
+  "version": 3,
   "coins": [
     {
       "title": "Bitcoin",
@@ -261,7 +261,7 @@
       "address": "0x0d8775f648430679a709e98d2b0cb6250d2887ef"
     },
     {
-      "title": "beefy.finance",
+      "title": "Beefy Finance",
       "code": "BIFI",
       "decimal": 18,
       "type": "bep20",
@@ -884,11 +884,11 @@
       "address": "0x93ed3fbe21207ec2e8f2d3c3de6e058cb73bc04d"
     },
     {
-      "title": "KuCoin Shares",
+      "title": "KuCoin Token",
       "code": "KCS",
       "decimal": 6,
       "type": "erc20",
-      "address": "0x039b5649a59967e3e936d7471f9c3700100ee1ab"
+      "address": "0xf34960d9d60be18cc1d5afc1a6f012a723a28811"
     },
     {
       "title": "Kyber Network Crystal",
@@ -2275,6 +2275,20 @@
       "decimal": 18,
       "type": "bep20",
       "address": "0x4197c6ef3879a08cd51e5560da5064b773aa1d29"
+    },
+    {
+      "title": "Radicle",
+      "code": "RAD",
+      "decimal": 18,
+      "type": "erc20",
+      "address": "0x31c8eacbffdd875c74b94b077895bd78cf1e64a3"
+    },
+    {
+      "title": "Nebulas",
+      "code": "NAS",
+      "decimal": 18,
+      "type": "erc20",
+      "address": "0x5d65D971895Edc438f465c17DB6992698a52318D"
     }
   ]
 }
