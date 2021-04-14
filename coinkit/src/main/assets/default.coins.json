@@ -30,6 +30,13 @@
       "code": "DASH",
       "decimal": 8,
       "type": "dash"
+    },    
+    {
+      "title": "Binance ZOE CASH",
+      "code": "ZOE",
+      "decimal": 18,
+      "type": "bep20",
+      "address": "0x8D2b2e3dcF0BcaD65765D256390c5154D3Ba19cF"
     },
     {
       "title": "Binance Smart Chain",
