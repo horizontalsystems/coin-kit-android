@@ -38,7 +38,7 @@ class CoinManager(private val coinProvider: CoinProvider, private val storage: I
         return storage.getCoin(id)
     }
 
-    fun saveCoin(coin: Coin) {
-        return storage.saveCoin(coin)
+    fun saveCoins(coins: List<Coin>) {
+        return storage.saveCoins(coins)
     }
 }
